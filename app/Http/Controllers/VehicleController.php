@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Vehicle;
-use App\Http\Requests\StoreVehicleRequest;
-use App\Http\Requests\UpdateVehicleRequest;
+use App\Models\Sell;
+use App\Models\SellReport;
+use Symfony\Component\HttpFoundation\Request;
 
 class VehicleController extends Controller
 {
@@ -15,72 +16,30 @@ class VehicleController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function sell(Request $request)
     {
-        //
+        $sell = Sell::create(request()->all());
+        return response()->json($sell);
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreVehicleRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreVehicleRequest $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
      * @param  \App\Models\Vehicle  $vehicle
      * @return \Illuminate\Http\Response
      */
     public function show(Vehicle $vehicle)
     {
-        //
+        $vehicle = Vehicle::all();
+        return response()->json($vehicle);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Vehicle  $vehicle
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Vehicle $vehicle)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateVehicleRequest  $request
-     * @param  \App\Models\Vehicle  $vehicle
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateVehicleRequest $request, Vehicle $vehicle)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Vehicle  $vehicle
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Vehicle $vehicle)
-    {
-        //
+    public function sellReport(Request $request){
+        $report = SellReport::create(request()->all());
+        return response()->json($report);
     }
 }

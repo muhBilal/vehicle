@@ -5,7 +5,7 @@ namespace App\Models;
 use Jenssegers\Mongodb\Auth\User as Authenticatable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable
+class User extends Authenticatable implements JWTSubject
 {
     protected $connection = 'mongodb';
     protected $collection = 'pengguna';
@@ -18,6 +18,6 @@ class User extends Authenticatable
     }
     public function getJWTCustomClaims()
     {
-        return response()->json();
+        return [];
     }
 }

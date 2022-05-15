@@ -1,8 +1,12 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\VehicleController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -18,4 +22,13 @@ use App\Http\Controllers\Auth\RegisterController;
 //     return $request->user();
 // });
 
-Route::post('register', [RegisterController::class, 'index']);
+Route::namespace('Auth')->group(function(){
+    Route::post('register', [RegisterController::class, 'index']);
+    Route::post('login', [LoginController::class, 'login']);
+});
+
+Route::get('user', [UserController::class, 'index']);
+Route::get('stok', [VehicleController::class, 'show']);
+Route::post('sell', [VehicleController::class, 'sell']);
+Route::post('sellReport', [VehicleController::class, 'sellReport']);
+

@@ -28,4 +28,10 @@ class SellReportRepository{
     {
         return SellReport::find($id)->update($data);
     }
+
+    public function storeReport($data)
+    {
+        $report = SellReport::where('id_kendaraan', $data['id_kendaraan'])->first();
+        return $report;
+    }
 }

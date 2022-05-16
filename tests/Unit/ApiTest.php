@@ -31,7 +31,6 @@ class ApiTest extends TestCase
 
     public function test_report()
     {
-        // $this->get(route('report'))->assertStatus(200);
-        return 'test';
+        $this->get(route('report'))->assertStatus(200);
     }
 }

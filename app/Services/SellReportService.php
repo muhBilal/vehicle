@@ -20,8 +20,8 @@ class SellReportService
     }
 
     public function store($data){
-        $report = SellReport::where('id_kendaraan', $data['id_kendaraan'])->first();
 
+        $report = $this->SellReportRepository->storeReport($data);
 
         if(!$report){
             $report = SellReport::create($data);

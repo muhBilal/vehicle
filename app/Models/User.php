@@ -8,7 +8,7 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 class User extends Authenticatable implements JWTSubject
 {
     protected $connection = 'mongodb';
-    protected $collection = 'pengguna';
+    protected $collection = 'user';
     protected $guarded = [];
 
 

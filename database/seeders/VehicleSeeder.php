@@ -38,5 +38,29 @@ class VehicleSeeder extends Seeder
             ],
             "stock" => 3,
         ]);
+        Vehicle::create([
+            "nama" => "gtr",
+            "tahun_keluaran" => 2020,
+            "warna" => "merah",
+            "harga" => 431000000,
+            "mobil" => [
+                "mesin" => "3350 cc",
+                "kapasitas_penumpang" => 2,
+                "tipe" => "MPV"
+            ],
+            "stock" => 4,
+        ]);
+        Vehicle::create([
+            "nama" => "vario",
+            "tahun_keluaran" => 2022,
+            "warna" => "hitam",
+            "harga" => 25000000,
+            "mobil" => [
+                "mesin" => "200 cc",
+                "kapasitas_penumpang" => 2,
+                "tipe" => "MPV"
+            ],
+            "stock" => 6,
+        ]);
     }
 }

@@ -1,22 +1,41 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use App\Models\Vehicle;
 use App\Models\Sell;
 use App\Models\SellReport;
-use Symfony\Component\HttpFoundation\Request;
+
+use App\Services\VehicleService;
+use App\Services\SellReportService;
+use Exception;
+use Illuminate\Http\Request;
+
 
 class VehicleController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
+    protected $VehicleService, $SellReportService;
 
+    public function __construct(VehicleService $vehicleService, SellReportService $sellReportService)
+    {
+        $this->vehicleService = $vehicleService;
+        $this->sellReportService = $sellReportService;
+    }
+
+    public function stock()
+    {
+        $result = ['status'=> 200];
+
+        try{
+            $result['data'] = $this->vehicleService->getAll();
+        }catch (Exception $e){
+            $result = [
+                'status'=>500,
+                'error' => $e->getMessage()
+            ];
+        }
+
+        return response()->json($result);
     }
 
     /**
@@ -24,22 +43,44 @@ class VehicleController extends Controller
      */
     public function sell(Request $request)
     {
-        $sell = Sell::create(request()->all());
-        return response()->json($sell);
+        // $sell = Sell::create(request()->all());
+        // return response()->json($sell);
+
+        // $result = ['status'=>200];
+
+        // try{
+        //     $result['data'] = $this->postService->getAll();
+        // }
+
+        $data = $request->all();
+        $result = ['status'=> 201];
+
+        try{
+            $result['data'] = $this->sellReportService->store($data);
+        }catch(Exception $e){
+            $result = [
+            'status'=> 500,
+            'eror' => $e->getMessage()
+            ];
+        }
+
+        return response()->json($result);
     }
 
-    /**
-     * @param  \App\Models\Vehicle  $vehicle
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Vehicle $vehicle)
+    public function sellReport(Request $request)
     {
-        $vehicle = Vehicle::all();
-        return response()->json($vehicle);
-    }
+        $data = $request->all();
+        $result = ['status'=> 201];
 
-    public function sellReport(Request $request){
-        $report = SellReport::create(request()->all());
-        return response()->json($report);
+        try{
+            $result['data'] = $this->sellReportService->getAll();
+        }catch(Exception $e){
+            $result = [
+            'status'=> 500,
+            'eror' => $e->getMessage()
+            ];
+        }
+
+        return response()->json($result);
     }
 }

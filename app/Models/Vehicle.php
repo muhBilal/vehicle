@@ -11,7 +11,7 @@ class Vehicle extends Model
 {
     // use HasFactory;
     protected $connection = 'mongodb';
-    protected $collection = 'kendaraan';
+    protected $collection = 'vehicle';
     protected $guarded = [];
 
 }

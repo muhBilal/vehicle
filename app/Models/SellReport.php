@@ -9,6 +9,6 @@ class SellReport extends Model
 {
     use HasFactory;
     protected $connection = 'mongodb';
-    protected $collection = 'laporan_penjualan';
+    protected $collection = 'report';
     protected $guarded = [];
 }

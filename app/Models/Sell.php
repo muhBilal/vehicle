@@ -9,6 +9,6 @@ class Sell extends Model
 {
     use HasFactory;
     protected $connection = 'mongodb';
-    protected $collection = 'penjualan';
+    protected $collection = 'sell';
     protected $guarded = [];
 }

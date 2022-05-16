@@ -14,3 +14,5 @@
  - linux `./vendor/bin/phpunit` 
 12. Jalankan service dengan `php artisan serve`
 13. Layanan siap digunakan
+
+[Documentasi](https://web.postman.co/documentation/18328201-e065dfd7-5ece-484f-82c3-1a391309f632/publish?workspaceId=04f50f55-930d-4442-8157-99a857668de4)

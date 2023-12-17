@@ -15,4 +15,4 @@
 12. Jalankan service dengan `php artisan serve`
 13. Layanan siap digunakan
 
-[Documentasi](https://documenter.getpostman.com/view/18328201/UyxjG6tV)
+[Dokumentasi](https://documenter.getpostman.com/view/18328201/UyxjG6tV)
